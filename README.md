@@ -3,6 +3,14 @@
 For simple visualizations that don't need interactivity with your page, this pattern with Flask and Plotly is a great
 solution. You get all the nice D3 features, like hover text events, without limiting your available production paths.
 
+## Run project:
+
+``` 
+\venv\Scripts\python.exe -m flask run
+```
+
+Result: [127.0.0.1:5000](http://127.0.0.1:5000/)
+
 ## Links:
 
 * [Create a Plotly Data Visualization App Using One Line of JS](https://towardsdatascience.com/create-a-plotly-data-visualization-app-using-one-line-of-js-b1865391faa4)
@@ -28,7 +36,7 @@ data = json.dumps(plot_data, cls=plotly.utils.plotlyJSONEncoder)
 layout = json.dumps(plot_layout, cls=plotly.utils.plotlyJSONEncoder)
 ```
 
-Use jinja to bring JSON data into HTML, as seen here.
+Use Jinja to bring JSON data into HTML, as seen here.
 
 ``` 
 <script>
