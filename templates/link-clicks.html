@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Link Clicks | Plotly Express</title>
+    {#    <script src="https://cdn.plot.ly/plotly-2.3.0.min.js"></script>#}
+    <script src="{{ url_for('static', filename='js/plotly-2.3.0.min.js') }}"></script>
+</head>
+<body>
+<div>
+    <div id="myPlot"></div>
+</div>
+</body>
+
+{# Initialize new plot on Dashboard template#}
+<script>
+Plotly.newPlot("myPlot",
+{{ fig | safe }},
+{displayModeBar: false}
+);
+document.getElementsByClassName('modebar-container')[0].style.display = "none";
+</script>
+{#<script src="{{ url_for('static', filename='js/new_js_plot.js') }}"></script>#}
+</html>

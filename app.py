@@ -88,6 +88,45 @@ def create_plot_express_csv():
     return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
 
+# -------------------------------------------------------
+
+#  Plotly EXPRESS Sample #3
+
+
+def create_plot_link_clicks():
+    fig = px.line(
+        x=['2020-10-01',
+           '2020-10-02',
+           '2020-10-03',
+           '2020-10-04',
+           '2020-10-05',
+           '2020-10-06',
+           '2021-01-07',
+           '2021-02-08',
+           '2021-03-09'],
+        y=[10, 20, 100, 50, 0, 1, 55, 25, 150],
+        labels={'y': '', 'x': ''},
+        title='',
+    )
+
+    fig.update_xaxes(
+        tickangle=30,
+        title_font={"size": 20},
+        title_standoff=25
+    )
+
+    fig.update_yaxes(
+        title_standoff=25)
+
+    fig.update_layout(),
+    # fig.show(config=dict(displayModeBar=False))
+
+    return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+
+# -------------------------------------------------------
+
+
 @app.route("/express")
 def express_csv():
     fig = create_plot_express_csv()
@@ -98,6 +137,12 @@ def express_csv():
 def clicks():
     fig = create_plot_express_clicks()
     return render_template("clicks.html", fig=fig)
+
+
+@app.route("/lc")
+def link_clicks():
+    fig = create_plot_link_clicks()
+    return render_template("link-clicks.html", fig=fig)
 
 
 if __name__ == '__main__':

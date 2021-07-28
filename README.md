@@ -91,3 +91,7 @@ HTML document.
 </script>
 </html>
 ```
+
+## Getting Started in JavaScript
+
+* [link](https://plotly.com/javascript/getting-started/)
