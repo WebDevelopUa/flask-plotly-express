@@ -25,6 +25,6 @@ void function addPlot() {
     )
 
 
-    // document.getElementsByClassName('modebar-container')[0].style.display = "none";
+    document.getElementsByClassName('modebar-container')[0].style.display = "none";
 }()
 

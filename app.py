@@ -106,10 +106,11 @@ def create_plot_link_clicks():
            '2021-03-09'],
         y=[10, 20, 100, 50, 0, 1, 55, 25, 150],
         labels={'y': '', 'x': ''},
-        title='',
+        # title='xc',
     )
 
     fig.update_xaxes(
+        title='',
         tickangle=30,
         title_font={"size": 20},
         title_standoff=25
@@ -118,8 +119,39 @@ def create_plot_link_clicks():
     fig.update_yaxes(
         title_standoff=25)
 
-    fig.update_layout(),
+    # https: // plotly.com / python / reference / layout /
+    # https: // habr.com / ru / post / 502958 /
+    # https: // plotly.com / python / legend /
+    # fig.update_layout(),
     # fig.show(config=dict(displayModeBar=False))
+    # fig.update_layout({'plot_bgcolor': "#21201f", 'paper_bgcolor': "#21201f", 'legend_orientation': "h"},
+    #                   legend=dict(y=1, x=0),
+    #                   font=dict(color='#dedddc'),
+    #                   dragmode='pan',
+    #                   hovermode='x unified',
+    #                   margin=dict(b=20, t=0, l=0, r=40),
+    #                   ),
+
+    fig.update_layout(
+        hovermode=False,
+        showlegend=False,
+        dragmode=False,
+        clickmode="none",
+        font=dict(color='#000080'),
+        margin=dict(b=20, t=0, l=0, r=40),
+        modebar=dict(
+            bgcolor='rgba(256,256,256, 0.1)',
+            remove=["autoScale2d", "autoscale", "editInChartStudio", "editinchartstudio", "hoverCompareCartesian",
+                    "hovercompare", "lasso", "lasso2d", "orbitRotation", "orbitrotation", "pan", "pan2d", "pan3d",
+                    "reset", "resetCameraDefault3d", "resetCameraLastSave3d", "resetGeo", "resetSankeyGroup",
+                    "resetScale2d", "resetViewMapbox", "resetViews", "resetcameradefault", "resetcameralastsave",
+                    "resetsankeygroup", "resetscale", "resetview", "resetviews", "select", "select2d",
+                    "sendDataToCloud", "senddatatocloud", "tableRotation", "tablerotation", "toImage",
+                    "toggleHover", "toggleSpikelines", "togglehover", "togglespikelines", "toimage", "zoom",
+                    "zoom2d", "zoom3d", "zoomIn2d", "zoomInGeo", "zoomInMapbox", "zoomOut2d", "zoomOutGeo",
+                    "zoomOutMapbox", "zoomin", "zoomout"]
+        ),
+    ),
 
     return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
@@ -142,7 +174,10 @@ def clicks():
 @app.route("/lc")
 def link_clicks():
     fig = create_plot_link_clicks()
-    return render_template("link-clicks.html", fig=fig)
+    config_1 = 2
+    config_2 = 3
+
+    return render_template("link-clicks.html", fig=fig, config_1=config_1, config_2=config_2)
 
 
 if __name__ == '__main__':
