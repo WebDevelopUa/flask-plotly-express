@@ -133,11 +133,16 @@ def create_plot_link_clicks():
     #                   ),
 
     fig.update_layout(
-        hovermode=False,
-        showlegend=False,
-        dragmode=False,
-        clickmode="none",
-        font=dict(color='#000080'),
+        # hovermode=False,
+        # showlegend=False,
+        # dragmode=False,
+        # clickmode="none",
+        separators='/',
+        # paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor=" #F8F9F9",
+        font=dict(
+            color='#000080'
+        ),
         margin=dict(b=20, t=0, l=0, r=40),
         modebar=dict(
             bgcolor='rgba(256,256,256, 0.1)',
@@ -152,6 +157,20 @@ def create_plot_link_clicks():
                     "zoomOutMapbox", "zoomin", "zoomout"]
         ),
     ),
+
+    # https: // plotly.com / python / reference / layout / xaxis /
+    fig.update_xaxes(
+        tickmode='auto',
+        # tickmode='linear',
+        # tickmode='array',
+        nticks=25,
+        tickcolor='#FFFF00',
+        visible=True,
+        # color='#FF0000',
+        # title=dict(
+        #     text='xaxes'
+        # )
+    )
 
     return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 

@@ -1,7 +1,17 @@
 {% macro new_plot_create(fig, config_1 , config_2) %}
 
     {# Initialize new plot on Dashboard template#}
-    <div style="width:100%; border: 1px solid darkslategrey">
+    <div style="width:100%; border: 1px solid lightblue; text-align: right">
+        <span>Date Range:</span>
+        <label>
+            <select name="select">Date Range
+                <option value="value1" selected>Weekly</option>
+                <option value="value2">Monthly</option>
+                <option value="value3">Yearly</option>
+            </select>
+        </label>
+        <br/>
+        <br/>
         <div id="myPlot" style="width:100%;"></div>
     </div>
 
