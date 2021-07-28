@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Total Clicks - Plotly Express</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+<div>
+    <h1>Total Clicks - Plotly Express</h1>
+    <div id="myPlot"></div>
+</div>
+</body>
+<script>
+    Plotly.newPlot("myPlot", {{ fig | safe }})
+</script>
+</html>

@@ -14,7 +14,57 @@ def load_data():
         return list(dict_reader)
 
 
-def create_plot_express():
+#  Plotly Sample
+
+# def create_plot():
+#     data = load_data()
+#
+#     trace1 = {
+#         "x": [d["date"] for d in data],
+#         "y": [d["total_tests"] for d in data],
+#         "name": "trace1 - Total Tests"
+#     }
+#
+#     trace2 = {
+#         "x": [d["date"] for d in data],
+#         "y": [d["total_cases"] for d in data],
+#         "name": "trace2 - Total Cases"
+#     }
+#
+#     trace3 = {
+#         "x": [d["date"] for d in data],
+#         "y": [d["total_deaths"] for d in data],
+#         "name": "trace3 - Total Deaths"
+#     }
+#
+#     plot_data = [trace1, trace2, trace3]
+#
+#     plot_layout = {
+#         "title": "plot_layout - PLOT Layout Title"
+#     }
+#
+#     data = json.dumps(plot_data, cls=plotly.utils.PlotlyJSONEncoder)
+#     layout = json.dumps(plot_layout, cls=plotly.utils.PlotlyJSONEncoder)
+#
+#     return data, layout
+#
+
+# @app.route("/")
+# def home():
+#     data, layout = create_plot()
+#     return render_template("index.html", data=data, layout=layout)
+
+
+# @app.route("/express")
+# def express():
+#     fig = create_plot_express()
+#     return render_template("express.html", fig=fig)
+
+# -------------------------------------------------------
+
+#  Plotly EXPRESS Sample #1 - LINE
+
+def create_plot_express_clicks():
     data = load_data()
     fig = px.line(
         x=[d["date"] for d in data],
@@ -24,49 +74,30 @@ def create_plot_express():
     return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
 
-def create_plot():
+# -------------------------------------------------------
+
+#  Plotly EXPRESS Sample #2
+
+def create_plot_express_csv():
     data = load_data()
-
-    trace1 = {
-        "x": [d["date"] for d in data],
-        "y": [d["total_tests"] for d in data],
-        "name": "trace1 - Total Tests"
-    }
-
-    trace2 = {
-        "x": [d["date"] for d in data],
-        "y": [d["total_cases"] for d in data],
-        "name": "trace2 - Total Cases"
-    }
-
-    trace3 = {
-        "x": [d["date"] for d in data],
-        "y": [d["total_deaths"] for d in data],
-        "name": "trace3 - Total Deaths"
-    }
-
-    plot_data = [trace1, trace2, trace3]
-
-    plot_layout = {
-        "title": "plot_layout - PLOT Layout Title"
-    }
-
-    data = json.dumps(plot_data, cls=plotly.utils.PlotlyJSONEncoder)
-    layout = json.dumps(plot_layout, cls=plotly.utils.PlotlyJSONEncoder)
-
-    return data, layout
-
-
-@app.route("/")
-def home():
-    data, layout = create_plot()
-    return render_template("index.html", data=data, layout=layout)
+    df = px.data.gapminder().query("continent=='Canada'")
+    fig = px.line(df,
+                  x=[d["date"] for d in data],
+                  y=[d["continent"] for d in data],
+                  title='Life expectancy in Canada')
+    return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
 
 @app.route("/express")
-def express():
-    fig = create_plot_express()
+def express_csv():
+    fig = create_plot_express_csv()
     return render_template("express.html", fig=fig)
+
+
+@app.route("/clicks")
+def clicks():
+    fig = create_plot_express_clicks()
+    return render_template("clicks.html", fig=fig)
 
 
 if __name__ == '__main__':
