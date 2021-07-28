@@ -1,0 +1,15 @@
+{% macro new_plot_create(fig) %}
+
+{# Initialize new plot on Dashboard template#}
+<div style="border: 1px solid darkslategrey">
+    <div id="myPlot"></div>
+</div>
+
+{# Initialize new plot on Dashboard template#}
+<script>
+    Plotly.newPlot("myPlot",
+        {{ fig | safe }}
+    );
+    {#document.getElementsByClassName('modebar-container')[0].style.display = "none";#}
+</script>
+{% endmacro %}
