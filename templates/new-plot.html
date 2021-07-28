@@ -2,14 +2,18 @@
 
     {# Initialize new plot on Dashboard template#}
     <div style="width:100%; border: 1px solid lightblue; text-align: right">
-        <span>Date Range:</span>
-        <label>
-            <select name="select">Date Range
-                <option value="value1" selected>Weekly</option>
-                <option value="value2">Monthly</option>
-                <option value="value3">Yearly</option>
-            </select>
-        </label>
+        <form>
+            <span>Date Range:</span>
+            <label>
+                <select id="dateRange"
+                        name="select"
+                >Date Range
+                    <option value="Weekly" selected>Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                </select>
+            </label>
+        </form>
         <br/>
         <br/>
         <div id="myPlot" style="width:100%;"></div>
