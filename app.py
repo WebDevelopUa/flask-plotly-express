@@ -216,7 +216,7 @@ def clicks():
     return render_template("clicks.html", fig=fig)
 
 
-@app.route("/lc")
+@app.route("/")
 def link_clicks():
     fig = create_plot_link_clicks()
     config_1 = 2
